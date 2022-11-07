@@ -20,6 +20,172 @@
     <title>Boolzapp</title>
 </head>
 <body>
+    <div class="background">
+        <div id="app" class="d-flex">
+            <div class="left">
+                <div class="header-col d-flex j-between al-center">
+                    <div class="user">
+                        <img src="img/avatar_io.jpg" alt="user-img">
+                        <span>
+                            Sofia
+                        </span>
+                    </div>
+                    <nav>
+                        <ul class="d-flex">
+                            <li>
+                                <i class="fa-solid fa-circle-notch"></i>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-message"></i>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+    
+                <div class="add-notification-desk d-flex al-center">
+                    <div class="icon-bell">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div class="text-icon">
+                        <h5>
+                            Ricevi notifiche di nuovi messaggi
+                        </h5>
+                        <a href="#">
+                            Attiva le notifiche desktop
+                        </a>
+                    </div>
+                </div>
+    
+                <div class="input-search">
+                    <div class="content-input d-flex">
+                            <span>
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                        
+                            <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    </div>
+                </div>
+    
+                <div class="chat-thumbnail">
+                    <div v-for="(contact, index) in contacts" class="thumbnail d-flex">
+                        <div class="user">
+                            <img :src="`img/avatar${contact.profilePic}.jpg`" alt="Contact pic">
+                        </div>
+    
+                        <div class="thumbnail-right d-flex j-between">
+                           <div class="name-lastmsg">
+                                <span class="name-chat">
+                                    {{contact.name}}
+                                </span>
+                                <span>
+                                    {{contact.messages[contact.messages.length - 1].message}}
+                                </span>
+                           </div>
+    
+                           <div class="time">
+                                <span>
+                                    {{contact.messages[contact.messages.length - 1].hour}}
+                                </span>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+    
+                <div class="header-col d-flex j-between al-center">
+                    <div class="user d-flex al-center">
+                        <img src="img/avatar_1.jpg" alt="user-img">
+                        <div class="name-last-enter p-left">
+                            <span>
+                                Michele
+                            </span>
+                            <p>
+                                Ultimo accesso oggi alle 12:00
+                            </p>
+                        </div>
+                    </div>
+    
+                    <nav>
+                        <ul class="d-flex">
+                            <li>
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-paperclip"></i>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+    
+                <div class="content-chat">
+                    <div class="msg-chat d-flex">
+                        <div class="user-msg msg">
+                            <span>
+                                Hai sceso il cane?
+                            </span>
+                            <span class="chevron">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                            <span class="hour">
+                                15:30
+                            </span>
+                        </div>
+                        <div class="user-msg msg">
+                            <span>
+                                Ricordati di stendere i panni
+                            </span>
+                            <span class="chevron">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                            <span class="hour">
+                                15:30
+                            </span>
+                        </div>
+                        <div class="contact-msg msg">
+                            <span>
+                                Tutto Fatto!
+                            </span>
+                            <div class="chevron">
+                                <i class="fa-solid fa-chevron-down"></i>
+                                <div class="dropdown-chevron">
+                                    <ul>
+                                        <li>
+                                            Message info
+                                        </li>
+                                        <li>
+                                            Delete message
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="hour">
+                                15:30
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="send-msg d-flex j-between al-center">
+                    <div class="emoji">
+                        <i class="fa-regular fa-face-smile"></i>
+                    </div>
+                    <div class="text-area d-flex al-center">
+                        <input type="text" placeholder="Scrivi un messaggio ... ">
+                    </div>
+                    <div class="msg-vocal">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
 
     <script src="js/app.js"></script>
