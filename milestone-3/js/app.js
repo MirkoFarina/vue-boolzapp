@@ -84,7 +84,8 @@ createApp ({
                 }
             ],
             counter: 0,
-            newMsgUser: ''
+            newMsgUser: '',
+            now: new Date()
         }
     },
     methods: {
@@ -96,7 +97,7 @@ createApp ({
         sendMsg(){
             const newMsgObj = {
                 date: '07/11/2022',
-                hour: '15:30',
+                hour: this.now.getHours() + ':' + this.now.getMinutes(),
                 message: this.newMsgUser,
                 status: 'sent'
             }
@@ -107,7 +108,7 @@ createApp ({
         replyBot(){
             const msgReplyBot = {
                 date: '07/11/2022',
-                hour: '15:30',
+                hour: this.now.getHours() + ':' + this.now.getMinutes(),
                 message: 'ok',
                 status: 'received'
             }
