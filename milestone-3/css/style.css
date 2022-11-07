@@ -1,0 +1,279 @@
+/* GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+:root {
+    --light-gray: #b1b1b1;
+    --bg-gray: #eaeaea;
+}
+
+img {
+    max-width: 100%;
+}
+
+i {
+    color: var(--light-gray);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    padding-left: 20px;
+}
+
+input:focus {
+    outline: none;
+}
+/* /GENERAL */
+
+/* UTILITY */
+.d-flex {
+    display: flex;
+}
+
+.j-between {
+    justify-content: space-between;
+}
+
+.al-center {
+    align-items: center;
+}
+
+.active {
+    background-color: var(--bg-gray);
+}
+
+.p-left {
+    padding-left: 20px;
+}
+/* /UTILITY */
+
+/* BACKGROUND */
+
+.background {
+    height: 100vh;
+    background: linear-gradient(180deg, #009688 20%, #dadbd3 10%, #d2dbdb 30%);
+    padding-top: 20px;
+}
+
+/* APP */
+#app {
+    margin: 0 auto;
+    width: 90%;
+    min-width: 950px;
+    height: 95vh;
+}
+
+.header-col, .send-msg {
+    background-color: var(--bg-gray);
+    padding: 10px 15px;
+    height: 70px;
+}
+
+/* LEFT */
+.left {
+    width: 30%;
+    border-right: 1px solid var(--light-gray);
+}
+
+.user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.add-notification-desk {
+    padding: 10px 20px;
+    background-color: #8edafc;
+}
+
+.add-notification-desk .icon-bell {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    background-color: #f2fbff;
+    margin-right: 10px;
+}
+
+.icon-bell i {
+    color: #8edafc;
+}
+
+.add-notification-desk .text-icon a {
+    color: #5a8694;
+    font-size: .8rem;
+
+}
+
+.input-search {
+    width: 100%;
+    padding: 10px;
+    background-color: #fafafa;
+}
+
+
+.input-search .content-input {
+    background-color: white;
+    padding: 10px;
+}
+
+.content-input span {
+    width: 70px;
+    text-align: center;
+    border-right: 2px solid #fbfbfb;
+}
+
+.content-input span i {
+    font-size: 1.1rem;
+}
+
+.content-input input {
+    border: none;
+    width: calc(100% - 70px);
+    padding-left: 10px;
+}
+
+.chat-thumbnail {
+    background-color: white;
+    width: 100%;
+    height: calc(100% - 199px);
+    overflow-y: scroll;
+}
+
+.thumbnail {
+    padding: 15px;
+    cursor: pointer;
+}
+
+.thumbnail .user {
+    width: 70px;
+    margin-right: 10px;
+}
+
+.thumbnail .user img {
+    width: 60px;
+    height: 60px;
+}
+
+.thumbnail-right {
+    width: calc(100% - 70px);
+ }
+ 
+
+.thumbnail-right .name-chat {
+    display: block;
+    color: black;
+    font-size: 1rem;
+}
+
+.thumbnail-right span {
+    font-size: .7rem;
+    color: var(--light-gray);
+}
+/* /LEFT */
+
+/* RIGHT */
+.right {
+    width: 70%;
+}
+
+.right .name-last-enter p {
+    color: var(--light-gray);
+    font-size: .8rem;
+}
+
+.content-chat {
+    height: calc(100% - 140px);
+    background-image: url('../img/mine.jpg');
+    padding: 50px 100px;
+    overflow-y: scroll;
+}
+
+
+.text-area {
+    width: 90%;
+    height: 100%;
+}
+
+.msg {
+    position: relative;
+    padding: 10px 5px 10px 15px;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.msg-chat {
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.user-msg {
+    align-self: flex-end;
+    background-color: #d5f9ba;
+}
+
+.contact-msg {
+    align-self: flex-start;
+    background-color: white;
+}
+
+.chevron {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    display: none;
+    cursor: pointer;
+}
+
+.chevron i {
+    font-size: .7rem;
+}
+
+.msg:hover .chevron {
+    display: block;
+}
+
+.dropdown-chevron {
+    background-color: white;
+    display: none;
+}
+
+.dropdown-chevron  li {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.dropdown-chevron  li:hover {
+    background-color: #f2fbff;
+}
+
+.hour {
+    display: block;
+    text-align: end;
+    font-size: .6rem;
+    color: var(--light-gray);
+}
+
+.send-msg input {
+    border-radius: 5px;
+    padding-left: 20px;
+    height: 80%;
+    width: 100%;
+    border: none;
+}
+
+/* /RIGHT */
