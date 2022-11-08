@@ -45,12 +45,12 @@
                                     </div>
                                     <ul>
                                         <li  
-                                        v-for="(person, index) in addressBook" 
+                                        v-for="(person, index) in contacts" 
                                         class="d-flex al-center"
                                          @click.stop="thumbnailClick(index)">
                                             <img :src="`img/avatar${person.profilePic}.jpg`" alt="">
                                             <h3 class="p-left">
-                                               {{person.name}}
+                                               {{person.name[0].toUpperCase() + person.name.toLowerCase().substring(1, person.name.length)}}
                                             </h3>
                                         </li>
                                     </ul>

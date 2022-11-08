@@ -245,7 +245,6 @@ createApp ({
                     ]
                 }
             ],
-            addressBook: [],
             counter: 0,
             isDesk: false,
             newMsgUser: '',
@@ -347,18 +346,6 @@ createApp ({
         },
          firstLetterUp(){
             return this.contacts[this.counter].name[0].toUpperCase() + this.contacts[this.counter].name.toLowerCase().substring(1, this.contacts[this.counter].name.length);
-         },
-         createTheAddressBook () {
-            this.contacts.forEach(contact => {
-                const personBook = {
-                    name: contact.name[0].toUpperCase() + contact.name.toLowerCase().substring(1, contact.name.lenght),
-                    profilePic: contact.profilePic
-                }
-                this.addressBook.push(personBook);
-            })
          }
-    },
-    mounted(){
-        this.createTheAddressBook();
     }
 }).mount('#app')
