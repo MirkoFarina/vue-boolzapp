@@ -246,6 +246,7 @@ createApp ({
                 }
             ],
             counter: 0,
+            isDesk: false,
             newMsgUser: '',
             now: new Date(),
             lastHour: '',
