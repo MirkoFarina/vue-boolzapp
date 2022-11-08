@@ -257,9 +257,7 @@ createApp ({
             searchInChat: '',
             isDropdown: false,
             isOnline: false,
-            isOpen: false,
-            newContact: '',
-            newImg: ''
+            isOpen: false
         }
     },
     methods: {
@@ -358,13 +356,6 @@ createApp ({
                 }
                 this.addressBook.push(personBook);
             })
-         },
-         pushNewPerson(){
-            const newPerson = {
-                name: this.newContact,
-                profilePic: this.newImg
-            }
-            this.addressBook.push(newPerson)
          }
     },
     mounted(){

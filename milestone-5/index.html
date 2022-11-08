@@ -36,6 +36,9 @@
                                 <i class="fa-regular fa-address-book"></i>
                                 <div class="address-book d-flex" v-if="isOpen">
                                     <div>
+                                        <div  @click.stop="isOpen = false" class="close">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </div>
                                         <h3>
                                             All contacts
                                         </h3>

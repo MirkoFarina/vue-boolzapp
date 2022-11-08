@@ -116,6 +116,9 @@ input:focus {
     left: 0;
     flex-direction: column;
 }
+.address-book .close {
+    text-align: end;
+}
 
 .address-book h4, .address-book h3{
     margin-bottom: 20px;
