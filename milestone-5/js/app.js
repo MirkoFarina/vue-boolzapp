@@ -5,7 +5,7 @@ createApp ({
         return {
             contacts: [
                 {
-                    name: 'Michele',
+                    name: 'michele',
                     profilePic: '_1',
                     visible: true,
                     lastAccess: '07/11/2022 18:30',
@@ -32,7 +32,7 @@ createApp ({
                     ]
                 },
                 {
-                    name: 'Piergiorgio',
+                    name: 'piergiorgio',
                     profilePic: '_2',
                     visible: false,
                     lastAccess: '07/11/2022 17:30',
@@ -59,7 +59,7 @@ createApp ({
                     ]
                 },
                 {
-                    name: 'Marco',
+                    name: 'marco',
                     profilePic: '_3',
                     visible: false,
                     lastAccess: '07/11/2022 16:22',
@@ -89,8 +89,13 @@ createApp ({
             counter: 0,
             newMsgUser: '',
             now: new Date(),
+            lastHour: '',
+            minutes: '',
+            day: '',
+            year: '',
             searchInChat: '',
-            isDropdown: false
+            isDropdown: false,
+            firstUp: ''
         }
     },
     methods: {
@@ -100,10 +105,11 @@ createApp ({
             this.contacts[index].visible = true; 
         },
         sendMsg(){
+            this.loopHour();
             if(this.newMsgUser === '') return;
             const newMsgObj = {
-                date: '07/11/2022',
-                hour: this.now.getHours() + ':' + this.now.getMinutes(),
+                date: this.day + '/' + (this.month + 1) + '/' + this.year,
+                hour: this.lastHour + ':' + this.minutes,
                 message: this.newMsgUser,
                 status: 'sent'
             }
@@ -112,9 +118,11 @@ createApp ({
             setTimeout(this.replyBot, 1000);
         },
         replyBot(){
+            this.loopHour();
+            this.newLastAccess();
             const msgReplyBot = {
-                date: '07/11/2022',
-                hour: this.now.getHours() + ':' + this.now.getMinutes(),
+                date: this.day + '/' + (this.month + 1) + '/' + this.year,
+                hour: this.lastHour + ':' + this.minutes,
                 message: 'ok',
                 status: 'received'
             }
@@ -122,10 +130,8 @@ createApp ({
         },
         searchTheLetters () {
             if(this.searchInChat.length > 0){
-                const newWord =  this.searchInChat[0].toUpperCase() + this.searchInChat.toLowerCase().substring(1, this.searchInChat.length) ;
-            
                 this.contacts.forEach(contact => {
-                contact.search = contact.name.includes(newWord);
+                contact.search = contact.name.includes(this.searchInChat.toLowerCase());
             })
             }else {
                 this.contacts.forEach(contact => contact.search = true);
@@ -154,7 +160,27 @@ createApp ({
             }else {
                 return "";
             }
-        }
-
+        },
+        loopHour (){
+                this.now = new Date();
+                this.lastHour = this.now.getHours();
+                this.minutes = this.now.getMinutes();
+                if(this.lastHour < 10) this.lastHour = '0'+ this.lastHour;
+                if(this.minutes < 10) this.minutes = '0'+ this.minutes;
+        },
+        newLastAccess (){
+            this.day = this.now.getDate();
+            this.month = this.now.getMonth();
+            this.year= this.now.getFullYear();
+            if(this.day < 10) this.day = '0' + this.day;
+            if((this.month + 1) < 10) this.month = '0' + this.month;
+            this.contacts[this.counter].lastAccess = this.day + '/' + (this.month + 1) + '/' + this.year + '  ' + this.lastHour + ':' + this.minutes ;
+        },
+         firstLetterUp(){
+            return this.contacts[this.counter].name[0].toUpperCase() + this.contacts[this.counter].name.toLowerCase().substring(1, this.contacts[this.counter].name.length);
+         }
     }
 }).mount('#app')
+
+
+// newName= contacts[counter].name[0].toUpperCase() + contacts[counter].name.toLowerCase().substring(1, contacts[counter].name.length)

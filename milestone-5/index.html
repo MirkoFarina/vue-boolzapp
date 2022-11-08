@@ -86,7 +86,7 @@
                         <div class="thumbnail-right d-flex j-between">
                             <div class="name-lastmsg">
                                 <span class="name-chat">
-                                    {{contact.name}}
+                                    {{contact.name[0].toUpperCase() + contact.name.toLowerCase().substring(1, contact.name.length)}}
                                 </span>
                                 <span :set="text = lastMessage(contact)">
                                     {{text}}
@@ -110,8 +110,9 @@
                         :src="`img/avatar${contacts[counter].profilePic}.jpg`" 
                         alt="contact-img">
                         <div class="name-last-enter p-left">
-                            <span>
-                                {{contacts[counter].name}}
+                            <span
+                            :set="newName= firstLetterUp()">
+                                {{newName}}
                             </span>
                             <p>
                                 {{`Ultimo accesso ${contacts[counter].lastAccess}`}}
@@ -146,7 +147,7 @@
                             <span>
                                 {{allMessage.message}}
                             </span>
-                            <span 
+                            <div 
                             @click="isDropdown = !isDropdown"
                             class="chevron">
                                 <i class="fa-solid fa-chevron-down"></i>
@@ -163,7 +164,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </span>
+                            </div>
                             <span class="hour">
                                 {{allMessage.hour}}
                             </span>

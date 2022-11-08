@@ -259,11 +259,12 @@ input:focus {
     background-color: white;
     position: absolute;
     right: 0; 
+    top: 0;
     z-index: 2;
 }
 
 .dropdown-chevron  li {
-    padding: 10px 15px;
+    padding: 10px 20px;
     cursor: pointer;
 }
 
