@@ -84,6 +84,165 @@ createApp ({
                             status: 'received'
                         }
                     ]
+                },
+                {
+                    name: 'eleonora',
+                    profilePic: '_io',
+                    visible: false,
+                    lastAccess: '08/11/2022 16:22',
+                    search: true,
+                    messages: [
+                        {
+                            date: '07/11/2022',
+                            hour: '15:30',
+                            message: 'Ciao come stai?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '15:35',
+                            message: 'Bene tu?',
+                            status: 'received'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '16:20',
+                            message: 'Bene bene',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '16:20',
+                            message: 'Cosa fai stasera?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '15:35',
+                            message: 'Niente, penso di stare a casa',
+                            status: 'received'
+                        }
+                    ]
+                },
+                {
+                    name: 'ugo',
+                    profilePic: '_5',
+                    visible: false,
+                    lastAccess: '07/11/2022 17:30',
+                    search: true,
+                    messages: [
+                        {
+                            date: '07/11/2022',
+                            hour: '15:30',
+                            message: 'Vai a comprare le medicine',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '15:35',
+                            message: 'Comprami anche le sigarette',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '16:45',
+                            message: 'Mi dispiace non sono riuscito ad andare',
+                            status: 'received'
+                        }
+                    ]
+                },
+                {
+                    name: 'luca',
+                    profilePic: '_8',
+                    visible: false,
+                    lastAccess: '08/11/2022 16:22',
+                    search: true,
+                    messages: [
+                        {
+                            date: '07/11/2022',
+                            hour: '15:30',
+                            message: 'Ciao come stai?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '15:35',
+                            message: 'Bene tu?',
+                            status: 'received'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '16:20',
+                            message: 'Bene bene',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '16:20',
+                            message: 'Cosa fai stasera?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '15:35',
+                            message: 'Niente, penso di stare a casa',
+                            status: 'received'
+                        }
+                    ]
+                },
+                {
+                    name: 'luna',
+                    profilePic: '_6',
+                    visible: false,
+                    lastAccess: '07/11/2022 16:22',
+                    search: true,
+                    messages: [
+                        {
+                            date: '07/11/2022',
+                            hour: '15:30',
+                            message: 'Vai a comprare le medicine',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '15:35',
+                            message: 'Comprami anche le sigarette',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '16:20',
+                            message: 'Guarda stavo per chiedertelo io',
+                            status: 'received'
+                        }
+                    ]
+                },
+                {
+                    name: 'pino',
+                    profilePic: '_7',
+                    visible: false,
+                    lastAccess: '07/11/2022 16:22',
+                    search: true,
+                    messages: [
+                        {
+                            date: '07/11/2022',
+                            hour: '15:30',
+                            message: 'Vai a comprare le medicine',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '15:35',
+                            message: 'Comprami anche le sigarette',
+                            status: 'sent'
+                        },
+                        {
+                            date: '07/11/2022',
+                            hour: '16:20',
+                            message: 'Guarda stavo per chiedertelo io',
+                            status: 'received'
+                        }
+                    ]
                 }
             ],
             counter: 0,
@@ -187,6 +346,3 @@ createApp ({
          }
     }
 }).mount('#app')
-
-
-// newName= contacts[counter].name[0].toUpperCase() + contacts[counter].name.toLowerCase().substring(1, contacts[counter].name.length)
