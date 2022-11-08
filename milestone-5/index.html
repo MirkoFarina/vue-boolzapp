@@ -114,8 +114,11 @@
                             :set="newName= firstLetterUp()">
                                 {{newName}}
                             </span>
-                            <p>
+                            <p v-if="!isOnline">
                                 {{`Ultimo accesso ${contacts[counter].lastAccess}`}}
+                            </p>
+                            <p v-else>
+                                {{contacts[counter].lastAccess}}
                             </p>
                         </div>
                     </div>

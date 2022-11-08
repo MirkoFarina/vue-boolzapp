@@ -95,7 +95,7 @@ createApp ({
             year: '',
             searchInChat: '',
             isDropdown: false,
-            firstUp: ''
+            isOnline: false
         }
     },
     methods: {
@@ -116,10 +116,11 @@ createApp ({
             this.contacts[this.counter].messages.push(newMsgObj);
             this.newMsgUser = '';
             setTimeout(this.replyBot, 1000);
+            this.newLastAccess(true)
         },
         replyBot(){
             this.loopHour();
-            this.newLastAccess();
+            this.newLastAccess(false);
             const msgReplyBot = {
                 date: this.day + '/' + (this.month + 1) + '/' + this.year,
                 hour: this.lastHour + ':' + this.minutes,
@@ -147,7 +148,6 @@ createApp ({
         },
         newHour(contact){
             if(contact.messages.length !== 0) {
-
                 return  contact.messages[contact.messages.length - 1].hour;
             }else {
                 return "";
@@ -155,7 +155,6 @@ createApp ({
         },
         lastMessage(contact){
             if(contact.messages.length !== 0) {
-
                 return contact.messages[contact.messages.length - 1].message
             }else {
                 return "";
@@ -168,13 +167,20 @@ createApp ({
                 if(this.lastHour < 10) this.lastHour = '0'+ this.lastHour;
                 if(this.minutes < 10) this.minutes = '0'+ this.minutes;
         },
-        newLastAccess (){
+        newLastAccess (isOnline){
             this.day = this.now.getDate();
             this.month = this.now.getMonth();
             this.year= this.now.getFullYear();
             if(this.day < 10) this.day = '0' + this.day;
             if((this.month + 1) < 10) this.month = '0' + this.month;
-            this.contacts[this.counter].lastAccess = this.day + '/' + (this.month + 1) + '/' + this.year + '  ' + this.lastHour + ':' + this.minutes ;
+            
+            if(isOnline) {
+                this.isOnline = !this.isOnline
+                this.contacts[this.counter].lastAccess = 'online';
+            }else {
+                this.isOnline = !this.isOnline
+                this.contacts[this.counter].lastAccess = this.day + '/' + (this.month + 1) + '/' + this.year + '  ' + this.lastHour + ':' + this.minutes ;
+            }
         },
          firstLetterUp(){
             return this.contacts[this.counter].name[0].toUpperCase() + this.contacts[this.counter].name.toLowerCase().substring(1, this.contacts[this.counter].name.length);
