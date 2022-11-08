@@ -245,6 +245,7 @@ createApp ({
                     ]
                 }
             ],
+            addressBook: [],
             counter: 0,
             isDesk: false,
             newMsgUser: '',
@@ -255,11 +256,15 @@ createApp ({
             year: '',
             searchInChat: '',
             isDropdown: false,
-            isOnline: false
+            isOnline: false,
+            isOpen: false,
+            newContact: '',
+            newImg: ''
         }
     },
     methods: {
         thumbnailClick(index){
+            this.isOpen = false;
             this.contacts[this.counter].visible = false;
             this.counter = index;
             this.contacts[index].visible = true; 
@@ -335,15 +340,34 @@ createApp ({
             if((this.month + 1) < 10) this.month = '0' + this.month;
             
             if(isOnline) {
-                this.isOnline = !this.isOnline
+                this.isOnline = !this.isOnline;
                 this.contacts[this.counter].lastAccess = 'online';
             }else {
-                this.isOnline = !this.isOnline
+                this.isOnline = !this.isOnline;
                 this.contacts[this.counter].lastAccess = this.day + '/' + (this.month + 1) + '/' + this.year + '  ' + this.lastHour + ':' + this.minutes ;
             }
         },
          firstLetterUp(){
             return this.contacts[this.counter].name[0].toUpperCase() + this.contacts[this.counter].name.toLowerCase().substring(1, this.contacts[this.counter].name.length);
+         },
+         createTheAddressBook () {
+            this.contacts.forEach(contact => {
+                const personBook = {
+                    name: contact.name[0].toUpperCase() + contact.name.toLowerCase().substring(1, contact.name.lenght),
+                    profilePic: contact.profilePic
+                }
+                this.addressBook.push(personBook);
+            })
+         },
+         pushNewPerson(){
+            const newPerson = {
+                name: this.newContact,
+                profilePic: this.newImg
+            }
+            this.addressBook.push(newPerson)
          }
+    },
+    mounted(){
+        this.createTheAddressBook();
     }
 }).mount('#app')

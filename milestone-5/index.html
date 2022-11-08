@@ -32,6 +32,27 @@
                     </div>
                     <nav>
                         <ul class="d-flex">
+                            <li @click="isOpen = true" class="input-address">
+                                <i class="fa-regular fa-address-book"></i>
+                                <div class="address-book d-flex" v-if="isOpen">
+                                    <div>
+                                        <h3>
+                                            All contacts
+                                        </h3>
+                                    </div>
+                                    <ul>
+                                        <li  
+                                        v-for="(person, index) in addressBook" 
+                                        class="d-flex al-center"
+                                         @click.stop="thumbnailClick(index)">
+                                            <img :src="`img/avatar${person.profilePic}.jpg`" alt="">
+                                            <h3 class="p-left">
+                                               {{person.name}}
+                                            </h3>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li>
                                 <i class="fa-solid fa-circle-notch"></i>
                             </li>
@@ -43,9 +64,9 @@
                             </li>
                         </ul>
                     </nav>
+                    
                 </div>
-    
-                <div v-if="!isDesk" class="add-notification-desk d-flex al-center">
+                <div  class="add-notification-desk d-flex al-center">
                     <div class="icon-bell">
                         <i class="fa-solid fa-bell-slash"></i>
                     </div>
@@ -54,7 +75,7 @@
                             Ricevi notifiche di nuovi messaggi
                         </h5>
                         <a @click="isDesk = !isDesk" href="#">
-                            Attiva le notifiche desktop
+                           {{isDesk ? 'Disattiva le notifiche desktop' : 'Attiva le notifiche desktop'}}
                         </a>
                     </div>
                 </div>
@@ -190,6 +211,12 @@
                     </div>
                 </div>
             </div>
+            <!-- <div v-for="person in addressBook">
+                <img :src="`img/avatar${person.profilePic}.jpg`" alt="">
+                <h1>
+                    {{person.name}}
+                </h1>
+            </div> -->
         </div>
     </div>
     
