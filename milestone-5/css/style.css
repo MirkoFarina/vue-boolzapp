@@ -328,4 +328,23 @@ input:focus {
     border: none;
 }
 
+.emoji {
+    position: relative;
+}
+
+.emoji-content {
+    background-color: rgba(255, 255, 255, .7);
+    padding: 20px;
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    width: 150px;
+    flex-wrap: wrap;
+}
+
+.emoji-content span {
+    width: calc(100% / 5);
+    cursor: pointer;
+}
+
 /* /RIGHT */

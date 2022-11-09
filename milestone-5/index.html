@@ -203,8 +203,33 @@
                 </div>
                 
                 <div class="send-msg d-flex j-between al-center">
-                    <div class="emoji">
+                    <div @click="isEmoji = !isEmoji" class="emoji">
                         <i class="fa-regular fa-face-smile"></i>
+                        <div
+                        v-if="isEmoji"
+                        class="emoji-content d-flex al-center">
+                            <span @click.stop="emSmile()">
+                                &#128512;
+                            </span>
+                            <span @click.stop="emSuperSmile()">
+                                &#128513;
+                            </span>
+                            <span @click.stop="emCryToSmile()">
+                                &#128514;
+                            </span>
+                            <span @click.stop="emSmileWithHorns()">
+                                &#128520;
+                            </span>
+                            <span @click.stop="emToEat()">
+                                &#128523;
+                            </span>
+                            <span @click.stop="emScared()">
+                                &#128561;
+                            </span>
+                            <span @click.stop="emFire()">
+                                &#x1F525;
+                            </span>
+                        </div>
                     </div>
                     <div class="text-area d-flex al-center">
                         <input 

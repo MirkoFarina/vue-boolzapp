@@ -287,7 +287,8 @@ createApp ({
             searchInChat: '',
             isDropdown: false,
             isOnline: false,
-            isOpen: false
+            isOpen: false,
+            isEmoji: false
         }
     },
     methods: {
@@ -367,6 +368,27 @@ createApp ({
             setInterval(() => {
                 this.now = DateTime.now();
             }, 1000);
+         },
+         emSmile(){
+            this.newMsgUser = `${this.newMsgUser} 😀`
+         },
+         emSuperSmile(){
+            this.newMsgUser = `${this.newMsgUser} 😁`
+         },
+         emCryToSmile(){
+            this.newMsgUser = `${this.newMsgUser} 😂`
+         },
+         emSmileWithHorns(){
+            this.newMsgUser = `${this.newMsgUser} 😈`
+         },
+         emToEat(){
+            this.newMsgUser = `${this.newMsgUser} 😋`
+         },
+         emScared(){
+            this.newMsgUser = `${this.newMsgUser} 😱`
+         },
+         emFire(){
+            this.newMsgUser = `${this.newMsgUser} 🔥`
          }
     },
     mounted(){
