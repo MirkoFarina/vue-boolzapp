@@ -1,3 +1,7 @@
+const DateTime = luxon.DateTime;
+
+
+
 const { createApp } = Vue;
 
 createApp ({
@@ -275,7 +279,7 @@ createApp ({
             counter: 0,
             isDesk: false,
             newMsgUser: '',
-            now: new Date(),
+            now: '',
             lastHour: '',
             minutes: '',
             day: '',
@@ -294,11 +298,10 @@ createApp ({
             this.contacts[index].visible = true; 
         },
         sendMsg(){
-            this.loopHour();
             if(this.newMsgUser === '') return;
             const newMsgObj = {
-                date: this.day + '/' + (this.month + 1) + '/' + this.year,
-                hour: this.lastHour + ':' + this.minutes,
+                date:this.now.setLocale('it').toFormat("dd '/' MM '/' kkkk"),
+                hour: this.now.setLocale('it').toFormat("HH ':' mm"),
                 message: this.newMsgUser,
                 status: 'sent'
             }
@@ -308,11 +311,10 @@ createApp ({
             this.newLastAccess(true)
         },
         replyBot(){
-            this.loopHour();
             this.newLastAccess(false);
             const msgReplyBot = {
-                date: this.day + '/' + (this.month + 1) + '/' + this.year,
-                hour: this.lastHour + ':' + this.minutes,
+                date: this.now.setLocale('it').toFormat("dd '/' MM '/' kkkk"),
+                hour: this.now.setLocale('it').toFormat("HH ':' mm"),
                 message: 'ok',
                 status: 'received'
             }
@@ -349,30 +351,27 @@ createApp ({
                 return "";
             }
         },
-        loopHour (){
-                this.now = new Date();
-                this.lastHour = this.now.getHours();
-                this.minutes = this.now.getMinutes();
-                if(this.lastHour < 10) this.lastHour = '0'+ this.lastHour;
-                if(this.minutes < 10) this.minutes = '0'+ this.minutes;
-        },
         newLastAccess (isOnline){
-            this.day = this.now.getDate();
-            this.month = this.now.getMonth();
-            this.year= this.now.getFullYear();
-            if(this.day < 10) this.day = '0' + this.day;
-            if((this.month + 1) < 10) this.month = '0' + this.month;
-            
             if(isOnline) {
                 this.isOnline = !this.isOnline;
                 this.contacts[this.counter].lastAccess = 'online';
             }else {
                 this.isOnline = !this.isOnline;
-                this.contacts[this.counter].lastAccess = this.day + '/' + (this.month + 1) + '/' + this.year + '  ' + this.lastHour + ':' + this.minutes ;
+                this.contacts[this.counter].lastAccess = this.now.setLocale('it').toFormat("dd '/' MM '/' kkkk ' ' HH ':' mm");
             }
         },
          firstLetterUp(){
             return this.contacts[this.counter].name[0].toUpperCase() + this.contacts[this.counter].name.toLowerCase().substring(1, this.contacts[this.counter].name.length);
+         },
+         refreshTime(){
+            setInterval(() => {
+                this.now = DateTime.now();
+            }, 1000);
          }
+    },
+    mounted(){
+       this.refreshTime()
     }
 }).mount('#app')
+
+
