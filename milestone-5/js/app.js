@@ -292,12 +292,20 @@ createApp ({
         }
     },
     methods: {
+        /**
+         * al click delle thumb, e al click nella rubrica mi apre quella chat 
+         * @param {number} index 
+         */
         thumbnailClick(index){
             this.isOpen = false;
             this.contacts[this.counter].visible = false;
             this.counter = index;
             this.contacts[index].visible = true; 
         },
+        /**
+         * al click del tasto invio da parte dell'utente invia un messaggio inserendolo nei dati principali, e facendo partire la risposta automatica.
+         * @returns se l'utente non inserisce nessun carattere ma solo spazi, blocca la funzione e annulla l'invio
+         */
         sendMsg(){
             if(this.newMsgUser === '') return;
             const newMsgObj = {
@@ -311,6 +319,9 @@ createApp ({
             setTimeout(this.replyBot, 1000);
             this.newLastAccess(true)
         },
+        /**
+         * dopo che l'utente invia il messaggio richiama questa funzione con seTimeout e dopo 1 secondo aggiungo ai dati principali la risposta da parte del bot, che è un semplice ok 
+         */
         replyBot(){
             this.newLastAccess(false);
             const msgReplyBot = {
@@ -321,6 +332,9 @@ createApp ({
             }
             this.contacts[this.counter].messages.push(msgReplyBot);
         },
+        /**
+         * questa funzione mi ricerca le lettere che io sto impostando nel mio input text, e mi fa visualizzare solo quelli che contengono le lettere che io sto cercando 
+         */
         searchTheLetters () {
             if(this.searchInChat.length > 0){
                 this.contacts.forEach(contact => {
@@ -330,6 +344,10 @@ createApp ({
                 this.contacts.forEach(contact => contact.search = true);
             }       
         },
+        /**
+         *  quando premo su deleteMessage mi cancella il messaggio dai miei dati principali e alla fine quando non ci sono piu' messaggi sostituisce il mio array di messaggi con uno vuoto
+         * @param {messaggio} message 
+         */
         deleteMessage(message){
             if(this.contacts[this.counter].messages.length !== 1){
                 this.contacts[this.counter].messages.splice(message,1)
@@ -338,6 +356,11 @@ createApp ({
                 this.contacts[this.counter].messages = newEmptyArray;
             }
         },
+        /**
+         * quando arrivo a cancellare l'ultimo messaggio per evitare un messaggio di errore mi restituisce stringa vuota cosi' che non ricerchi qualcosa nel mio array vuoto.
+         * @param {contatto} contact 
+         * @returns 
+         */
         newHour(contact){
             if(contact.messages.length !== 0) {
                 return  contact.messages[contact.messages.length - 1].hour;
@@ -345,6 +368,11 @@ createApp ({
                 return "";
             }
         },
+        /**
+         * quando arrivo a cancellare l'ultimo messaggio per evitare un messaggio di errore mi restituisce stringa vuota cosi' che non ricerchi qualcosa nel mio array vuoto.
+         * @param {contatto} contact 
+         * @returns 
+         */
         lastMessage(contact){
             if(contact.messages.length !== 0) {
                 return contact.messages[contact.messages.length - 1].message
@@ -352,6 +380,10 @@ createApp ({
                 return "";
             }
         },
+        /**
+         * quando il mio bot mi risponde, cambia il suo stato in online e subito dopo il suo ultimo accesso si aggiorna all'ultimo messaggio inviato.
+         * @param {*} isOnline 
+         */
         newLastAccess (isOnline){
             if(isOnline) {
                 this.isOnline = !this.isOnline;
@@ -361,14 +393,22 @@ createApp ({
                 this.contacts[this.counter].lastAccess = this.now.setLocale('it').toFormat("dd '/' MM '/' kkkk ' ' HH ':' mm");
             }
         },
+        /**
+         * 
+         * @returns mi ritorna la strigna con la prima lettera maiuscola
+         */
          firstLetterUp(){
             return this.contacts[this.counter].name[0].toUpperCase() + this.contacts[this.counter].name.toLowerCase().substring(1, this.contacts[this.counter].name.length);
          },
+         /**
+          * mi aggiorna di secondo in secondo la mia data e la mia ora al momento dell'avvio dell'applicazione
+          */
          refreshTime(){
             setInterval(() => {
                 this.now = DateTime.now();
             }, 1000);
          },
+         /* grazie a queste funzioni (anche se so che non è il metodo giusto) aggiungo l'emoji al mio testo, cosi' da poter inviare messaggi più carini */
          emSmile(){
             this.newMsgUser = `${this.newMsgUser} 😀`
          },
