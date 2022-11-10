@@ -276,6 +276,9 @@ createApp ({
                     ]
                 }
             ],
+            arrayEmoji: [
+                '😀', '😁', '😂','😈','😋','😱','🔥'
+            ],
             counter: 0,
             isDesk: false,
             newMsgUser: '',
@@ -349,12 +352,7 @@ createApp ({
          * @param {messaggio} message 
          */
         deleteMessage(message){
-            if(this.contacts[this.counter].messages.length !== 1){
-                this.contacts[this.counter].messages.splice(message,1)
-            }else {
-                const newEmptyArray = [];
-                this.contacts[this.counter].messages = newEmptyArray;
-            }
+            this.contacts[this.counter].messages.splice(message,1)
         },
         /**
          * quando arrivo a cancellare l'ultimo messaggio per evitare un messaggio di errore mi restituisce stringa vuota cosi' che non ricerchi qualcosa nel mio array vuoto.
@@ -408,27 +406,9 @@ createApp ({
                 this.now = DateTime.now();
             }, 1000);
          },
-         /* grazie a queste funzioni (anche se so che non è il metodo giusto) aggiungo l'emoji al mio testo, cosi' da poter inviare messaggi più carini */
-         emSmile(){
-            this.newMsgUser = `${this.newMsgUser} 😀`
-         },
-         emSuperSmile(){
-            this.newMsgUser = `${this.newMsgUser} 😁`
-         },
-         emCryToSmile(){
-            this.newMsgUser = `${this.newMsgUser} 😂`
-         },
-         emSmileWithHorns(){
-            this.newMsgUser = `${this.newMsgUser} 😈`
-         },
-         emToEat(){
-            this.newMsgUser = `${this.newMsgUser} 😋`
-         },
-         emScared(){
-            this.newMsgUser = `${this.newMsgUser} 😱`
-         },
-         emFire(){
-            this.newMsgUser = `${this.newMsgUser} 🔥`
+         /* dal mio array di emoji prendo l'emoji che sto cliccando e la stampo */
+         emSmile(emoji){
+            this.newMsgUser = `${this.newMsgUser} ${emoji}`;
          }
     },
     mounted(){
